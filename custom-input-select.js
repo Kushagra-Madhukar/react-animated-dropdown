@@ -11,7 +11,7 @@ const ArrowIcon = styled(ExpandLessIcon)`
 const CustomSelect = styled.div`
     display: flex;
     flex-direction: column;
-    width: ${props => props.width ? `${props.width}px` : '200px'};
+    width: ${props => props.width ? `${props.width}` : '200px'};
     font-size: ${props => props.fontSize ? props.fontSize : '1rem'};
     text-align: center;
     border: 1px solid #c3c3c3;
@@ -37,7 +37,7 @@ const SelectDropdown = styled.div`
     z-index: 100000;
     opacity: 1;
     background-color: ${props => props.bgColor ? props.bgColor : '#fff'};
-    width: ${props => props.width ? `${props.width}px` : '200px'};
+    width: ${props => props.width ? `${props.width}` : '200px'};
     max-height: ${props => props.isOpen ? '200px' : 0};
     overflow-y: auto;
     border: ${props => props.isOpen ? '1px' : 0} solid rgba(0,0,0,0.2);

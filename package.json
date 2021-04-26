@@ -1,6 +1,6 @@
 {
   "name": "react-animated-dropdown",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "An Alternative to default html select tag with animated select flow and customizable ui",
   "main": "custom-input-select.js",
   "scripts": {
