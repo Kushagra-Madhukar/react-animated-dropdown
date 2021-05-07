@@ -11,8 +11,6 @@ Features:
 
 # Installation and usage
 
-The easiest way to use react-select is to install it from npm and build it into your app with Webpack.
-
 ```
 yarn add react-animated-dropdown
 ```
@@ -46,7 +44,7 @@ const FruitSelector = () => {
         
         //Optional Props
         width="300px"
-        dropdownPlaceholder="Custom Placeholder"  //This only works if dropdownValue is empty
+        dropdownPlaceholder="Placeholder"  //This only works if initial dropdownValue is empty
         mainFontColor="#fff"
         dropdownFontColor="blue"
         mainBackgroundColor = "red"
