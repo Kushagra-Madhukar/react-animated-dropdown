@@ -17,6 +17,7 @@ const CustomSelect = styled.div`
     border: 1px solid #c3c3c3;
     border-radius: 3px;
     text-align: start;
+    margin: ${props => props.margin ? `${props.margin}` : '0 auto'};
 `
 const SelectMain = styled.div`
     width: 100%;
@@ -53,6 +54,7 @@ const SelectOption = styled.button`
     border: none;
     outline: none;
     text-align: start;
+    font-size: ${props => props.fontSize ? props.fontSize : '1rem'};
     color: ${props => props.color ? props.color : '#000'};
     background-color: ${props => props.bgColor ? props.bgColor : '#fff'};
     &:hover{
@@ -75,15 +77,17 @@ const DropdownIconContainer = styled.div`
     right: 0;
     top: 0;
 `
-const CustomInputSelect = ({width, dropdownOptions, onChange, dropdownPlaceholder, dropdownValue, color, backgroundColor, optionHoverColor, fontSize, dropdownBackgroundColor, dropdownFontColor}) => {
+const CustomInputSelect = ({width, dropdownOptions = [], onChange, dropdownPlaceholder, dropdownValue, mainFontColor, mainBackgroundColor, optionHoverColor, fontSize, dropdownBackgroundColor, dropdownFontColor, margin, closeOnOutsideClick = true}) => {
 
     const [dropdownOpen, setDropdownOpen] = useState(false)
     let placeholder = dropdownPlaceholder ? dropdownPlaceholder : 'Select...'
 
     const externalClickRef = useRef(null)
+
     useEffect(() => {
+
         function handleClickOutside(event) {
-            if (externalClickRef.current && !externalClickRef.current.contains(event.target)) {
+            if (externalClickRef.current && !externalClickRef.current.contains(event.target) && closeOnOutsideClick) {
                 setDropdownOpen(false)
             }
         }
@@ -92,19 +96,20 @@ const CustomInputSelect = ({width, dropdownOptions, onChange, dropdownPlaceholde
             // Unbind the event listener on clean up
             document.removeEventListener("mousedown", handleClickOutside);
         };
-    }, [externalClickRef]);
+    }, [externalClickRef, closeOnOutsideClick]);
 
     return (
-    <CustomSelect width={width} fontSize={fontSize} onClick={() => setDropdownOpen(!dropdownOpen)} ref={externalClickRef}>
-        <SelectMain backgroundColor={backgroundColor}>
-            <MainText color={color}>{dropdownValue ? dropdownValue : placeholder}</MainText>
-            <DropdownIconContainer><ArrowIcon open={dropdownOpen} color={color} fontSize={fontSize}/></DropdownIconContainer>
+    <CustomSelect width={width} fontSize={fontSize} margin={margin} onClick={() => setDropdownOpen(!dropdownOpen)} ref={externalClickRef}>
+        <SelectMain backgroundColor={mainBackgroundColor}>
+            <MainText color={mainFontColor}>{dropdownValue ? dropdownValue : placeholder}</MainText>
+            <DropdownIconContainer><ArrowIcon open={dropdownOpen} color={mainFontColor} fontSize={fontSize}/></DropdownIconContainer>
         </SelectMain>
         <SelectDropdownHolder>
-        <SelectDropdown isOpen={dropdownOpen} width={width} bgColor={dropdownBackgroundColor}>{dropdownOptions.map(op => <SelectOption onClick={onChange} value={op} type="button" hoverColor={optionHoverColor} bgColor={dropdownBackgroundColor} color={dropdownFontColor}>{op}</SelectOption>)}</SelectDropdown>
+        <SelectDropdown isOpen={dropdownOpen} width={width} bgColor={dropdownBackgroundColor}>{dropdownOptions.map(op => <SelectOption onClick={onChange} value={op} type="button" hoverColor={optionHoverColor} bgColor={dropdownBackgroundColor} color={dropdownFontColor} fontSize={fontSize}>{op}</SelectOption>)}</SelectDropdown>
         </SelectDropdownHolder>
     </CustomSelect>
     )
 }
 
 export default CustomInputSelect
+
