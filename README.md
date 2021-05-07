@@ -25,7 +25,7 @@ npm install react-animated-dropdown
 Example code:
 
 ```js
-import React from 'react';
+import React, {useState} from 'react';
 import Dropdown from 'react-animated-dropdown';
 
 const fruits = ["Apple", "Oranges", "Bananas"];
