@@ -3,12 +3,15 @@ import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import styled from 'styled-components'
 
 const ArrowIcon = styled(ExpandLessIcon)`
+&&{
     transform: ${props => props.open ? 'rotate(0)' : 'rotate(180deg)'};
     transition: transform 300ms ease-in-out;
     color: ${props => props.color ? props.color : '#000'};
     font-size: ${props => props.fontSize ? props.fontSize : '1rem'};
+}
 `
 const CustomSelect = styled.div`
+&&{
     display: flex;
     flex-direction: column;
     width: ${props => props.width ? `${props.width}` : '200px'};
@@ -18,21 +21,27 @@ const CustomSelect = styled.div`
     border-radius: 3px;
     text-align: start;
     margin: ${props => props.margin ? `${props.margin}` : '0 auto'};
+}
 `
 const SelectMain = styled.div`
+&&{
     width: 100%;
     height: 100%;
     display: flex;
     background-color: ${props => props.backgroundColor ? props.backgroundColor : '#fff'};
     border-radius: 3px;
     position: relative;
+}
 `
 const SelectDropdownHolder = styled.div`
+&&{
     position: relative;
     width: 100%;
     height: 0px;
+}
 `
 const SelectDropdown = styled.div`
+&&{
     position: absolute;
     top: 3px;
     z-index: 100000;
@@ -46,8 +55,10 @@ const SelectDropdown = styled.div`
     border-radius: 4px;
     display: flex;
     flex-direction: column;
+}
 `
 const SelectOption = styled.button`
+&&{
     width: 100%;
     cursor: pointer;
     padding: 0.3em;
@@ -60,14 +71,18 @@ const SelectOption = styled.button`
     &:hover{
         background-color: ${props => props.hoverColor ? props.hoverColor : 'orange'};
     }
+}
 `
 const MainText = styled.div`
+&&{
     width: 100%;
     height: 100%;
     padding: 0.4em;
     color: ${props => props.color ? props.color : "#000"};
+}
 `
 const DropdownIconContainer = styled.div`
+&&{
     height: 100%;
     min-width: 40px;
     display: flex;
@@ -76,6 +91,7 @@ const DropdownIconContainer = styled.div`
     position: absolute;
     right: 0;
     top: 0;
+}
 `
 const CustomInputSelect = ({width, dropdownOptions = [], onChange, dropdownPlaceholder, dropdownValue, mainFontColor, mainBackgroundColor, optionHoverColor, fontSize, dropdownBackgroundColor, dropdownFontColor, margin, closeOnOutsideClick = true}) => {
 
